@@ -913,6 +913,9 @@ blockquote:before{
 .format-quote .hentry {
 	width:100%;
 }
+.format-gallery{
+	background-color: rgba(0,0,0,.2);
+}
 /* 
 ==Gallery
 */
@@ -1516,4 +1519,13 @@ body.single-product .post-meta span{
 		max-width:300px;
 		float:left;
 	}
+}
+
+.randomness{
+	position: fixed;
+	background-color: orchid;
+	width:400px;
+	height:200px;
+	left:100px;
+	top:50%;
 }
