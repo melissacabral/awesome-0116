@@ -48,6 +48,39 @@ add_action( 'wp_enqueue_scripts', 'awesome_comment_reply' );
 function awesome_randomness(){
 	echo '<div class="randomness">frickin lasers</div>';
 }
-add_action( 'wp_footer', 'awesome_randomness' );
+//add_action( 'wp_footer', 'awesome_randomness' );
+
+//register all the menu areas you need
+function awesome_menus(){
+	register_nav_menus( array(
+		'main_menu' 	=> 'Main Navigation Menu',
+		'utilities' 	=> 'Utilities',
+	) );
+}
+add_action( 'init', 'awesome_menus' );
+
+
+//Helper function to display pagination on any template
+function awesome_pagination(){
+	?>
+	
+	<section class="pagination">
+			<?php 
+			//numbered pagination was added in 4.1, so check before using it
+			if( function_exists( 'the_posts_pagination' ) ){
+				//numbered 
+				the_posts_pagination( array(
+					'next_text' => 'Next Page &rarr;',
+					'prev_text' => '&larr;',
+					'mid_size' 	=> 3,
+				) ); 
+			}else{
+				previous_posts_link();
+				next_posts_link();
+			} ?>
+	</section>
+
+	<?php
+} //end awesome_pagination()
 
 //no close PHP

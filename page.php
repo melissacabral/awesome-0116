@@ -11,6 +11,15 @@
 			</h2>
 			<div class="entry-content">
 				<?php the_content(); ?>
+				<?php 
+				//for paginated posts 
+				wp_link_pages( array(
+					'next_or_number' => 'next',
+					'before' 		=> '<div class="post-pagination">Keep reading', 
+					'after'			=> '</div>'
+
+				) );  
+				?>
 			</div>
 				
 		</article><!-- end post -->

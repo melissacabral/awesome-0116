@@ -13,6 +13,15 @@
 			</h2>
 			<div class="entry-content">
 				<?php the_content(); ?>
+				<?php 
+				//for paginated posts 
+				wp_link_pages( array(
+					'next_or_number' => 'next',
+					'before' 		=> '<div class="post-pagination">Keep reading this post: ', 
+					'after'			=> '</div>'
+
+				) );  
+				?>
 			</div>
 			<div class="postmeta"> 
 				<span class="author"> Posted by: <?php the_author(); ?></span>
@@ -22,6 +31,11 @@
 				<span class="tags"><?php the_tags(); ?></span> 
 			</div><!-- end postmeta -->			
 		</article><!-- end post -->
+
+		<section class="pagination">
+			<?php previous_post_link( '%link', 'Previously: %title' ); ?>
+			<?php next_post_link( '%link', 'Next: %title' ); ?>
+		</section>
 
 		<?php comments_template(); ?>
 
