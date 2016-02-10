@@ -5,7 +5,7 @@
 		if( have_posts() ): ?>
 		<?php while( have_posts() ): the_post(); ?>
 
-		<?php the_post_thumbnail( 'big-banner' ); ?>
+		<?php awesome_slider(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
 			<h2 class="entry-title"> 				
@@ -24,6 +24,10 @@
 	<p>Try using the search bar instead</p>
 
 	<?php endif;  //end THE LOOP ?>
+
+
+	<!-- Custom Query & loop demo See functions.php -->
+	<?php awesome_products( 6, 'Newest Products' ); ?>
 
 </main><!-- end #content -->
 

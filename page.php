@@ -34,5 +34,5 @@
 
 </main><!-- end #content -->
 
-<?php get_sidebar(); //include sidebar.php ?>
+<?php get_sidebar( 'page' ); //include sidebar-page.php ?>
 <?php get_footer(); //include footer.php ?>

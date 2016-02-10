@@ -75,7 +75,7 @@ body {
 	background-color: #565552;
 	margin:2% auto;
 	padding:0 2%;
-	max-width:70em;}
+	max-width:1100px;}
 #content {
 	clear: both;
 	word-wrap:break-word;
@@ -851,6 +851,10 @@ img {
 	background-repeat:no-repeat;
 	padding-left:35px;
 }
+
+.sticky{
+	
+}
 /* 
 ==blockquotes
 */
@@ -1214,7 +1218,7 @@ RSS Feed Image
 	width:100%;
 	float:none;	
 }
-.single-product .product-image{
+.single-product .wp-post-image{
 	max-width: 35%;
 	height:auto;
 	float:right;
@@ -1370,16 +1374,17 @@ body.single-product .post-meta span{
 	margin:2em 0;
 }
 .latest-products img {      
-        margin:0 0 10px 0;
+        margin:0 0 1em 0;
+        display: block;
 }
 
 .latest-products .readmore {
         display:none;
 }
-.latest-products h2{
-        font-size:1.3em;
+#featured-content h2{
+        font-size:2em;
         margin:1em 0;
-        text-align: center;
+        font-weight: 200;
 }
 .latest-products a, .latest-products a:hover{
         color: white;
@@ -1390,12 +1395,13 @@ body.single-product .post-meta span{
 }
 .latest-products li{
        display: inline-block;
-       width:150px;
+       width:15.666%;
        list-style-type:none;
-       margin:0 20px 0 0;
+       margin:0 .5% 0 0;
        padding:0 ;
        background-image:none !important;
        position:relative;
+       min-width: 100px;
 }
 .latest-products .product-info{
         position:absolute;
@@ -1421,7 +1427,130 @@ body.single-product .post-meta span{
 .contact-info{
 	display: none;
 }
+/* == responsive slider */
+#awesome-slider,
+#awesome-slider ul{
+	position: relative;
+	overflow: hidden;
+}
+#awesome-slider li{
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	display: none;
+}
+#awesome-slider li:first-child{
+	position: relative;
+	display: block;
+}
+#awesome-slider .prev,
+#awesome-slider .next{
+	position: absolute;
+	background: rgba(0,0,0,.4);
+	top:50%;
+	left:0;
+	color:white;
+	padding:1em;
+	z-index:9999;
+	font-weight: bold;
+}
+#awesome-slider .next{
+	left:auto;
+	right:0;
+}
+#awesome-slider h2{
+	position: absolute;
+	top:0;
+	left:0;
+	text-align: center;
+	width: 100%;
+	height:100%;
+	background: rgba(0,0,0,.1);
+	color:white;
+	padding:16% .5em ;
+	font-size:3.5em;
+	line-height: 1.2;
+	/*text-transform: uppercase;*/
+	font-weight: 200;
+	text-shadow:0 1px 0  rgba(0,0,0,.5);
+}
+#awesome-slider .rslides_tabs{
+	position: absolute;
+	bottom:0;
+	left:0;
+	right:50%;
+	z-index: 99999;
+	width: 100%;
+	text-align: center;
+	padding-bottom:1em;
+}
+#awesome-slider .rslides_tabs li{
+	display: inline-block;
+	position: static;
+	width:auto;
+}
+
+#awesome-slider .rslides_tabs li a{
+	background-color: rgba(255,255,255,.5);
+	border:solid 2px transparent;
+	display: block;
+	margin:.75em;
+	border-radius: 300px;
+	width:.75em;
+	height:.75em;
+	text-indent: -9999px;
+	transition:all .3s ease-in;
+}
+/*current dot*/
+#awesome-slider .rslides_tabs .rslides_here a
+{
+	background-color: white;
+	border:solid 2px ehite;
+
+}
+
+#awesome-slider .rslides_tabs li a:hover{
+	border-color:white;
+}
+#menu-button{
+	display: block;
+	background: transparent;
+	border:solid 1px white;
+	width:auto;
+	position: relative;
+	padding:.2em .4em .2em 1.2em;
+}
+#menu-button:before{
+	  content: "";
+  position: absolute;
+  left: .1em;
+  top: 0.25em;
+  width: 1em;
+  height: 0.15em;
+  background: white;
+  box-shadow: 
+    0 0.25em 0 0 white,
+    0 0.5em 0 0 white;
+}
+.nav{
+	display: none;
+}
+.menu-open .nav,
+.showmenu .nav{
+	 display: block;
+}
+.showmenu #menu-button{
+	 display: none;
+}
+
 /*==Media Queries*/
+@media screen and (min-width: 500px) {
+
+  
+ 
+}
 @media screen and (min-width: 850px) {
 	h1.site-name{
 		width:31%;

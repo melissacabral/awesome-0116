@@ -1,32 +1,43 @@
 <?php get_header(); //include header.php ?>
 
 <main id="content">
-
-	<?php awesome_products( 4, 'Don\'t forget to look in the shop' ); ?>
-
 	<?php //THE LOOP
 		if( have_posts() ): ?>
+
+		<h2 class="archive-title"><?php single_term_title('Products Filtered By: '); ?></h2>
+
 		<?php while( have_posts() ): the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix cf' ); ?>>
+			
+			<a href="<?php the_permalink(); ?>">
+				<?php the_post_thumbnail( 'thumbnail' ); ?>
+			</a>
+			
 			<h2 class="entry-title"> 
 				<a href="<?php the_permalink(); ?>"> 
 					<?php the_title(); ?> 
 				</a>
 			</h2>
 
-			<?php the_post_thumbnail( 'thumbnail' ); ?>
+			<?php the_terms( get_the_id(), 'brand', '<h3>', ', ', '</h3>'  ); ?>			
 
 			<div class="entry-content">
 				<?php the_excerpt(); //first 55 words of the_content() ?>
+
+				<?php //show just the price custom field value
+				$price =  get_post_meta( get_the_id(), 'price', true );
+				//if this product has a price, show it in a pricetag
+				if($price){
+					?>
+					<span class="product-price">
+						<?php echo $price; ?>
+					</span>
+					<?php
+				} ?>
+				
 			</div>
-			<div class="postmeta"> 
-				<span class="author"> Posted by: <?php the_author(); ?></span>
-				<span class="date"><a href="<?php the_permalink(); ?>"><?php the_date(); ?></a></span>
-				<span class="num-comments"> <?php comments_number(); ?></span>
-				<span class="categories"><?php the_category(); ?></span>
-				<span class="tags"><?php the_tags(); ?></span> 
-			</div><!-- end postmeta -->			
+						
 		</article><!-- end post -->
 
 		<?php endwhile; ?>
@@ -42,5 +53,5 @@
 
 </main><!-- end #content -->
 
-<?php get_sidebar(); //include sidebar.php ?>
+<?php get_sidebar('shop'); //include sidebar-shop.php ?>
 <?php get_footer(); //include footer.php ?>
